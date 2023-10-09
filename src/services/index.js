@@ -7,3 +7,6 @@ module.exports.cartService = require("./cart.service");
 module.exports.countryService = require("./country.service");
 module.exports.stateService = require("./state.service");
 module.exports.cityService = require("./city.service");
+module.exports.findBySearchService = require("./findBySearch.service");
+module.exports.adminDashboardService = require("./admin.dashboard.service");
+module.exports.emailService = require("./email.service");

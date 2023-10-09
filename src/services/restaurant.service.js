@@ -25,11 +25,29 @@ const updateRestaurant = async(restaurantId , updateBody) =>{
     return restaurant.findByIdAndUpdate(restaurantId , {$set : updateBody})
 };
 
+// get restaurant by category
+const getRestaurantByCategory = async(restaurant_category) =>{
+    return restaurant.find({$or :[{restaurant_category}]});
+};
+
+// get restaurant images list
+const getRestaurantImages = async(restaurant_image) =>{
+    return restaurant.find({$or :[{restaurant_image}]});
+};
+
+// get restaurant by name
+const getRestaurantByName = async(restaurant_name) => {
+    return State.findOne({restaurant_name})
+}
 
 module.exports = {
     registerRestaurant,
     getRestaurantList,
     getRestaurantById,
     deleteRestaurant,
-    updateRestaurant
+    updateRestaurant,
+    getRestaurantByCategory,
+    getRestaurantImages,
+    getRestaurantByName
 }
+

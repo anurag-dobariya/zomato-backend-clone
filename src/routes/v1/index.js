@@ -9,6 +9,8 @@ const cartRoute = require("./cart.route");
 const countryRoute = require("./country.route.js");
 const stateRoute = require("./state.route.js");
 const cityRoute = require("./city.route.js");
+const findBySearchRoute = require("./findBySearch.route");
+const adminDashboardRoute = require("./admin.dashboard.route");
 
 const router = express.Router();
 
@@ -21,5 +23,7 @@ router.use("/cart", cartRoute);
 router.use("/country", countryRoute);
 router.use("/state", stateRoute);
 router.use("/city", cityRoute);
+router.use("/findBySearch", findBySearchRoute);
+router.use("/admin-dashboard", adminDashboardRoute);
 
 module.exports = router;

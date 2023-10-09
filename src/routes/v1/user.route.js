@@ -43,6 +43,12 @@ router.put(
     userController.updateUser
 );
 
+/** Send mail */
+router.post(
+    "/send-mail",
+    userController.sendMail
+  );
+
 module.exports = router;
 
 

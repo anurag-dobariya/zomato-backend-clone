@@ -46,6 +46,16 @@ const updateUser = async(userId , updateBody) =>{
     return user.findByIdAndUpdate(userId , {$set : updateBody})
 };
 
+// get user by email
+const getUserByEmail = async (email) => {
+  return user.findOne({ email });
+};
+
+// delete user by email
+const deleteUserByEmail = async (email) => {
+  return user.findOneAndDelete({ email: email });
+};
+
 module.exports = {
     registerUser,
     getUserList,
@@ -54,5 +64,7 @@ module.exports = {
     updateUser,
     findUserByEmail,
     findUserAndUpdate,
-    getAllUser
+    getAllUser,
+    getUserByEmail,
+    deleteUserByEmail
 }

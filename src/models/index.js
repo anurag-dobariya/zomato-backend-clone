@@ -7,3 +7,4 @@ module.exports.cart = require("./cart.model");
 module.exports.country = require("./country.model");
 module.exports.state = require("./state.model");
 module.exports.city = require("./city.model");
+module.exports.city = require("./city.model");

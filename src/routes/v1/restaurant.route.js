@@ -45,4 +45,10 @@ router.put(
     restaurantController.updateRestaurant
 );
 
+// get restaurant image list
+router.get(
+    "/restaurant-images",
+    restaurantController.getRestaurantImages
+)
+
 module.exports = router;

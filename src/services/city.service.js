@@ -31,6 +31,7 @@ const getCityByName = async(city_name) => {
 }
 
 
+
 module.exports = {
     createCity,
     getCityList,
