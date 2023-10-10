@@ -55,7 +55,7 @@ router.get(
 router.put(
     "/manage-status/:restaurantId",
     auth(),
-    productController.manageProductStatus
+    restaurantController.manageRestaurant
   );
 
 module.exports = router;

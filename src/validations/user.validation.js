@@ -7,7 +7,7 @@ const registerUser = {
         last_name: joi.string().required().trim(),
         email: joi.string().required().trim(),
         password: joi.string().required().trim(),
-        role: joi.string().valid('user', 'owner').default('user').required()
+        role: joi.string().valid('user', 'owner' , 'admin').default('user').required()
     })
 };
 
