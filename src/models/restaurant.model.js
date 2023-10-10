@@ -47,7 +47,7 @@ const restaurantSchema = new mongoose.Schema(
             type: String,
             trim: true
         },
-        is_active: {
+        is_verified: {
             type: Boolean,
             default: false
         }
@@ -55,13 +55,6 @@ const restaurantSchema = new mongoose.Schema(
     {
         timestamps: true,
         versionKey: false,
-        // toJSON:{
-        //     transform: function (doc, data) {
-        //         if (data?.gallery_image) {
-        //             data.gallery_image = `${config.base_url}gallery_images/${data.gallery_image}`;
-        //         }
-        //     },
-        // }
         toJSON: {
             transform: function (doc, data) {
                 if (data?.restaurant_image) {

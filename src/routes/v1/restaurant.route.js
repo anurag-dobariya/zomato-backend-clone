@@ -51,4 +51,11 @@ router.get(
     restaurantController.getRestaurantImages
 )
 
+// manage restaurant status
+router.put(
+    "/manage-status/:restaurantId",
+    auth(),
+    productController.manageProductStatus
+  );
+
 module.exports = router;

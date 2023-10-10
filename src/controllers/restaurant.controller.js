@@ -172,7 +172,37 @@ const updateRestaurant = async (req, res) => {
       message: "Restaurant details updated successfully!",
       data: updatedRestaurant,
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// manage restaurant status
+const manageRestaurant = async (req, res) => {
+  try {
+    const manageStatus = await restaurantService.manageRestaurant(
+      req.params.restaurantId
+    );
+
+    let resMessage = manageStatus.is_active
+      ? "restaurant is verified."
+      : "restaurant is not verified";
+
+    res.status(200).json({
+      success: true,
+      message: resMessage,
+      data: manageStatus,
+    });
+  } catch (error) {
+    res.status(error?.statusCode || 400).json({
+      success: false,
+      message:
+        error?.message || "Something went wrong, please try again or later!",
+    });
+  }
 };
 
 module.exports = {
@@ -182,4 +212,5 @@ module.exports = {
   deleteRestaurant,
   updateRestaurant,
   getRestaurantImages,
+  manageRestaurant
 };

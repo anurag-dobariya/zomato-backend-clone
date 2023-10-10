@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const { user } = require("../models");
 const config = require("../config/config");
 
-const auth = () => async (req, res, next) => {
+const auth = (token,roles) => async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     if (!token) {
@@ -10,7 +10,16 @@ const auth = () => async (req, res, next) => {
         status: 401,
         message : "Please authenticate!"
       }));
-    }
+    };
+
+    jwt.verify(token, config.jwt.secret_key, (err, decoded) => {
+      console.log(roles,'roles');
+      if (err || !roles.find((ele) => ele === decoded.role )) {
+        console.log(decoded.role,'decoded.role');
+        console.log("=====err=====", err);
+        throw Error("You dont have permission");
+      }
+    });
 
     const decoded = jwt.verify(
       token.replace("Bearer ", ""),

@@ -40,6 +40,25 @@ const getRestaurantByName = async(restaurant_name) => {
     return State.findOne({restaurant_name})
 }
 
+// manage restaurant
+const manageRestaurant = async (restaurantId) => {
+    const restaurantExists = await getRestaurantById(restaurantId);
+    if (!restaurantExists) {
+      throw new Error("restaurant not found!");
+    }
+
+    return Product.findOneAndUpdate(
+      { _id: restaurantId },
+      {
+        $set: {
+          is_active: !restaurantExists.is_active,
+        },
+      },
+      { new: true }
+    );
+  };
+
+
 module.exports = {
     registerRestaurant,
     getRestaurantList,
@@ -48,6 +67,7 @@ module.exports = {
     updateRestaurant,
     getRestaurantByCategory,
     getRestaurantImages,
-    getRestaurantByName
+    getRestaurantByName,
+    manageRestaurant
 }
 
